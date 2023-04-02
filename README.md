@@ -3,17 +3,12 @@
 This module defines the following GitHub related resources,
   - repositories
   - teams
-  - members of a team
+  - members
 
 
 It requires a terraform.tfvars with the following variables:
 ```
-github_token = "XXX"
-github_owner = "XXX"
+github_token = "XXX" // Personal access token
+github_owner = "XXX" // Organization name
 
 ```
-
-## TO-DO
-
-- Add multiple members to team
-- Add multiple team to repositories
