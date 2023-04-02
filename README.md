@@ -1,4 +1,4 @@
-# global
+# GitHub resources with Terraform
 
 This module defines the following GitHub related resources,
   - repositories
@@ -12,3 +12,8 @@ github_token = "XXX"
 github_owner = "XXX"
 
 ```
+
+## TO-DO
+
+- Add multiple members to team
+- Add multiple team to repositories
