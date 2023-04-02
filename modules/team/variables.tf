@@ -4,10 +4,11 @@ variable "name" {
   default     = null
 }
 
+
 variable "description" {
   description = "A description of the team."
   type        = string
-  default     = "GitHub team managed by Terraform"
+  default     = null
 }
 
 variable "privacy" {
