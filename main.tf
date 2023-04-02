@@ -1,20 +1,48 @@
 provider "github" {
-  token = var.TOKEN
-  owner = var.ORG
+  token = var.github_token
+  owner = var.github_owner
 }
 
-module "teams" {
-  source = "./modules/teams"
+/// Teams
+module "product_team" {
+  source      = "./modules/teams"
+  name        = "product"
+  description = "Product team"
+  privacy     = "closed"
 }
 
-module "members" {
-  source = "./modules/members"
-
-  product_team = module.teams.product_team
+module "admin_team" {
+  source      = "./modules/teams"
+  name        = "product"
+  description = "Admin team"
+  privacy     = "closed"
 }
 
-module "repositories" {
-  source = "./modules/repositories"
-
-  product_team = module.teams.product_team
+module "sre_team" {
+  source      = "./modules/teams"
+  name        = "sre"
+  description = "SRE team"
+  privacy     = "closed"
 }
+
+
+/// Team members
+module "tkorakas" {
+  source   = "./modules/members"
+  username = "tkorakas"
+  role     = "member"
+  team_id  = module.product_team.github_team_id // Add member to Product team
+}
+
+
+/// Repositories
+module "frontend_repo" {
+  source      = "./modules/repositories"
+  name        = "frontend_repo"
+  visibility  = "private"
+  description = "Frontend repository"
+
+  permission = "push"
+  team_id    = module.product_team.github_team_id // Add product team to repo
+}
+
